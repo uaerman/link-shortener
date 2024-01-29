@@ -1,20 +1,16 @@
-import express, {Request, Response} from 'express';
-import client from './database/db';
+import bodyParser from 'body-parser';
+import linkRoutes from './routes/linkRoutes';
+import {connect} from './database/client';
+import express from 'express';
 
-client.connect();
+connect();
 const app = express();
 const PORT = process.env.PORT;
 
-app.get('/', async (req: Request, res: Response) => {
-  try {
-    const result = await client.query('SELECT * FROM visits');
-    res.json(result.rows);
-  } catch (error) {
-    console.error('Error executing query:', error);
-    res.status(500).json({error: 'Internal server error'});
-  }
-});
+app.use(express.json());
+app.use(bodyParser.json());
 
+app.use(linkRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
