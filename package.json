@@ -24,7 +24,7 @@
   "dependencies": {
     "body-parser": "^1.20.2",
     "express": "^4.18.2",
-    "nanoid": "^5.0.4",
+    "knex": "^3.1.0",
     "pg": "^8.11.3",
     "uuid": "^9.0.1",
     "validator": "^13.11.0"
