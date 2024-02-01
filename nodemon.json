@@ -1,0 +1,6 @@
+{
+  "watch": ["src"],
+  "ext": "ts",
+  "exec": "ts-node",
+  "args": ["-r", "dotenv/config", "src/index.ts", "--env-file", ".env"]
+}
