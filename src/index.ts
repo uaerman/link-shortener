@@ -1,7 +1,7 @@
-import bodyParser from 'body-parser';
-import linkRoutes from './routes/linkRoutes';
-import {connect} from './database/client';
 import express from 'express';
+import bodyParser from 'body-parser';
+import {connect} from './database/client';
+import linkRoutes from './routes/linkRoutes';
 
 connect();
 const app = express();

@@ -1,4 +1,4 @@
-import { v4 as uuidv4 } from 'uuid';
+import {v4 as uuidv4} from 'uuid';
 import validator from 'validator';
 import {Request, Response} from 'express';
 import {client} from '../database/client';
@@ -16,7 +16,9 @@ export const createShortLink = async (req: Request, res: Response) => {
         .json({error: 'originalUrl must be a URL! e.g. https://example.com'});
 
     const uuid = uuidv4();
-    const shortCode = req.body.shortCode ? req.body.shortCode : uuid.substring(0, 6);
+    const shortCode = req.body.shortCode
+      ? req.body.shortCode
+      : uuid.substring(0, 6);
     const createdAt = new Date();
     const validSinceDate = validSince ? new Date(validSince) : null;
     const validUntilDate = validUntil ? new Date(validUntil) : null;

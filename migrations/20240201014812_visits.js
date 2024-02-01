@@ -2,11 +2,14 @@
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-exports.up = function(knex) {
-  return knex.schema.createTable('visits', function(table) {
+exports.up = function (knex) {
+  return knex.schema.createTable('visits', table => {
     table.increments('id').primary();
     table.integer('short_url_id').references('id').inTable('short_urls');
-    table.integer('visit_location_id').references('id').inTable('visit_locations');
+    table
+      .integer('visit_location_id')
+      .references('id')
+      .inTable('visit_locations');
     table.string('referer', 2024);
     table.timestamp('date').notNullable().defaultTo(knex.fn.now());
     table.string('remote_address', 255);
@@ -21,6 +24,6 @@ exports.up = function(knex) {
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-exports.down = function(knex) {
+exports.down = function (knex) {
   return knex.schema.dropTable('visits');
 };

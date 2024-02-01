@@ -1,10 +1,12 @@
+require('dotenv').config({path: '.env'});
+
 module.exports = {
   development: {
     client: 'postgresql',
     connection: {
       host: 'localhost',
       user: 'linkshort',
-      password: 'myreallycoolpassword',
+      password: 'coolpassword',
       database: 'linkshort',
     },
     migrations: {
